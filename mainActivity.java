@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 
 
@@ -11,15 +12,17 @@ public class mainActivity {
 	public static void main(String[] args) throws IOException {
 		//FormatGraphe graph = new FormatGraphe(new File("./graph.dot"));
 		//int[][] matrice = graph.getMatrice();
-		int[][] matrice ={{0, 0, 1, 1, 0},{1,1,1,0,0},{0,1,0,0,0},{1,1,0,0,0},{1,0,0,1,0}};
+		int[][] matrice ={{0,0,1,1,0},{1,1,1,0,0},{0,1,0,0,0},{1,1,0,0,0},{1,0,0,1,0}};
 		
-		//FormatGraphe graph = new FormatGraphe(matrice);
 		affiche(matrice);
 
 		fermetureTransitive(matrice);
 		
 		affiche(matrice);
+		
+		FormatGraphe graph = new FormatGraphe(matrice);
 		//graph.ecrireGraphe("./newGraph.dot");
+		customEcrireGraphe("./newGraph.dot",matrice);
 	}
 	
 	public static void affiche(int[][] matrice){
@@ -58,6 +61,30 @@ public class mainActivity {
 					}
 				}
 			}
+		}
+	}
+	
+	public static void customEcrireGraphe(String nomFichier, int[][] matrice){
+		File fichier = new File(nomFichier);
+		int longueur = matrice.length;
+		try{
+			FileWriter out = new FileWriter(fichier);
+			out.write("digraph G {\n");
+			for (int i = 0; i < longueur; i++) {
+				for (int j = 0; j < longueur; j++) {
+					if(matrice[j][i]>0){
+						out.write("\t"+i);
+						out.write(" -> "+j);
+						out.write(";\n");
+					}
+				}
+			}
+			out.write("}");
+			out.close();
+		}catch(Exception e){
+			System.err.println("Erreur d'ecriture");
+			System.err.println(e.getMessage());
+			e.printStackTrace();
 		}
 	}
 

@@ -70,11 +70,11 @@ public class FormatGraphe {
 	 * Construit un nouvel objet FormatGraphe à l'aide de la matrice
 	 *  d'adjacence.
 	 *
-	 * @param mat	Matrice d'ajacence
+	 * @param mat	Matrice d'adjacence
 	 */
 	public FormatGraphe(int[][] mat){
 		this.oriente = !(estSymetrique(mat));
-		Graphe graphe = new Graphe(oriente);
+		graphe = new Graphe(oriente);
 		int nbSommets = mat.length;
 		for (int i = 0; i < nbSommets; i++) {
 			Noeud courant = new Noeud(new Integer(i).toString());
@@ -434,7 +434,7 @@ public class FormatGraphe {
 							out.write("\t"+courant.getNom());
 							out.write(" -> ");
 							out.write(courant.getSucc(j).getNom());
-							int flux = courant.getFlux(j);
+							/*int flux = courant.getFlux(j);
 							int capacite = courant.getCapacite(j);
 							if(flux!= 1 || capacite!=-1){
 								out.write(" [label = \""+flux);
@@ -442,7 +442,7 @@ public class FormatGraphe {
 									out.write("["+capacite+"]");
 								}
 								out.write("\"]");
-							}
+							}*/
 							out.write(";\n");
 						}
 					}
