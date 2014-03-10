@@ -10,9 +10,12 @@ public class mainActivity {
 	 * @throws IOException 
 	 */
 	public static void main(String[] args) throws IOException {
-		//FormatGraphe graph = new FormatGraphe(new File("./graph.dot"));
-		//int[][] matrice = graph.getMatrice();
-		int[][] matrice ={{0,0,1,1,0},{1,1,1,0,0},{0,1,0,0,0},{1,1,0,0,0},{1,0,0,1,0}};
+		int[][] matrice1 ={{0,0,0,0,0,0},{1,0,1,0,0,0},{0,0,0,0,1,0},{1,0,0,0,1,0},{0,0,1,0,0,0},{0,0,0,1,0,0}};
+		int[][] matrice2 ={{0,0,1,1,0},{1,1,1,0,0},{0,1,0,0,0},{1,1,0,0,0},{1,0,0,1,0}};
+		int[][] matrice3 ={{0,0,1},{1,0,1},{0,0,0}};
+		int[][] matrice4 ={{0,0,1,0},{0,0,0,0},{0,1,1,0},{0,1,1,0}};
+		
+		int[][] matrice = matrice1;
 		
 		affiche(matrice);
 
@@ -20,8 +23,6 @@ public class mainActivity {
 		
 		affiche(matrice);
 		
-		FormatGraphe graph = new FormatGraphe(matrice);
-		//graph.ecrireGraphe("./newGraph.dot");
 		customEcrireGraphe("./newGraph.dot",matrice);
 	}
 	
@@ -29,7 +30,7 @@ public class mainActivity {
 		int longueur = matrice.length;
 		System.out.println();
 		System.out.print("    ");
-		for(int i=1 ; i<=5 ; i++){
+		for(int i=1 ; i<=longueur ; i++){
 			System.out.print(i+ " ");
 		}
 		System.out.println();
